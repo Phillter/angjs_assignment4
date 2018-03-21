@@ -1,32 +1,33 @@
 <!doctype html>
-<html lang="en" ng-app="NarrowItDownApp">
+<html lang="en" ng-app="MenuApp">
   <head>
-    <title>Narrow Down Your Menu Choice</title>
+    <title>Look Though The Menu</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
   </head>
-<body>
-   <div class="container" ng-controller="NarrowItDownController as nid">
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
+  <body>
+   <h1>Take a look at our menu!</h1>
+   
+   <ui-view></ui-view>
 
-    <div class="form-group">
-      <input type="text" ng-model="nid.searchTerm" placeholder="search term" class="form-control">
-    </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="nid.narrow();">Narrow It Down For Me!</button>
-    </div>
+   <!-- Libraries -->
+   <script src="lib/angular.min.js" charset="utf-8"></script>
+   <script src="lib/angular-ui-router.min.js" charset="utf-8"></script>
 
-    <!-- found-items should be implemented as a component -->
-    <div><h3>Found Items {{nid.found.length}}</h3>
-      <found-items
-      found="nid.found"
-      on-remove="nid.remove(index)"
-      error-check="nid.errorCheck()"></found-items>
-    </div>
-  </div>
+   <!-- Modules -->
+   <script src="src/menuapp/menuapp.module.js" charset="utf-8"></script>
+   <script src="src/menuapp/data.module.js" charset="utf-8"></script>
 
-</body>
+   <!-- Routes -->
+   <script src="src/routes.js" charset="utf-8"></script>
+
+   <!-- MenuApp artifacts -->
+   <script src="src/menuapp/categories.component.js" charset="utf-8"></script>
+   <script src="src/menuapp/items.component.js" charset="utf-8"></script>
+   <script src="src/menuapp/menudata.service.js" charset="utf-8"></script>
+
+  </body>
 </html>

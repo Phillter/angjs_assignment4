@@ -1,13 +1,13 @@
 (function () {
   'use strict';
 
-  angular.module('NarrowItDownApp', [])
-  .controller('NarrowItDownController', NarrowItDownController)
+  angular.module('MenuApp', [])
+  .controller('MenuController', MenuController)
   .directive('foundItems', foundItems)
   .service('MenuSearchService', MenuSearchService);
 
-  NarrowItDownController.$inject = ['MenuSearchService'];
-  function NarrowItDownController(MenuSearchService) {
+  MenuController.$inject = ['MenuSearchService'];
+  function MenuController(MenuSearchService) {
     var nid = this;
     nid.searchTerm = "";
     nid.found = [];
@@ -42,7 +42,7 @@
         onRemove: '&',
         errorCheck: '&'
       },
-      controller: NarrowItDownController,
+      controller: MenuController,
       controllerAs: 'nid',
       bindToController: true
     };
