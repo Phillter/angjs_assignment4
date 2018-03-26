@@ -22,12 +22,28 @@
     //Categories page
     .state('categories', {
       url:'/categories',
-      templateUrl: 'src/menuapp/templates/categories.template.html'
+      templateUrl: 'src/menuapp/templates/categories.template.html',
+      controller: 'CategoriesListController as categoriesList',
+      resolve: {
+        items: ['MenuDataService', function (MenuDataService) {
+          return MenuDataService.getAllCategories();
+        }]
+      }
     })
 
     //Items page
     .state('items', {
-      url: '/items',
-      templateUrl: '/src/menuapp/templates/items.templates.html'
+      url: '/{category}/items',
+      templateUrl: '/src/menuapp/templates/items.templates.html',
+      controller: 'ItemsListController as itemsList',
+      params: {
+        category: null
+      },
+      resolve: {
+        items: ['MenuDataService', 'categoryShortName',
+          function (MenuDataService, categoryShortName) {
+          return MenuDataService.getItemsForCategory(categoryShortName);
+        }]
+      }
     });
 })();
