@@ -6,7 +6,7 @@
     templateUrl:'src/menuapp/templates/items.template.html',
     //templateUrl: '../templates/items.template.html',
     bindings: {
-      items: '<'
+      itemsData: '<'
     }
   });
 
