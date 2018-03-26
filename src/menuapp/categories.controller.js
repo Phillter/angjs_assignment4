@@ -8,6 +8,5 @@
   function CategoriesListController(MenuDataService, categories) {
     var categoriesList = this;
     categoriesList.categories = categories;
-    console.log("Categories controller categories:", categoriesList.categories);
   }
 })();

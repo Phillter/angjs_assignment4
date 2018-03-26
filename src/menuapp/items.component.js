@@ -5,8 +5,8 @@
   .component('items', {
     templateUrl: 'src/menuapp/templates/items.template.html',
     bindings: {
-      items: '<'
+      itemsData: '<'
     }
   });
-  
+
 })();

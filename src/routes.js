@@ -33,15 +33,26 @@
 
     //Items page
     .state('items', {
-      url: '/{categoryShortName}/items',
+      url: '/items',
       templateUrl: '/src/menuapp/templates/items.template.html',
       controller: 'ItemsListController as itemsList',
+      params: {
+        categoryShortName: null
+      },
       resolve: {
-        items: ['MenuDataService', '$stateParams',
+        itemsData: ['MenuDataService', '$stateParams',
           function (MenuDataService, $stateParams) {
-            console.log("in routes");
           return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
         }]
+      }
+    })
+
+    .state('items.itemDetail', {
+      // url: '/item-details',
+      templateUrl:"src/menuapp/templates/item-detail.template.html",
+      controller: 'ItemDetailController as itemDetail',
+      params: {
+        itemId: null
       }
     });
   }

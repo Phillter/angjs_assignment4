@@ -4,11 +4,20 @@
   angular.module('MenuApp')
   .controller('ItemsListController', ItemsListController)
 
-  ItemsListController.$inject = ['MenuDataService', 'items'];
-  function ItemsListController(MenuDataService, items) {
+  ItemsListController.$inject = ['MenuDataService', 'itemsData'];
+  function ItemsListController(MenuDataService, itemsData) {
     var itemsList = this;
-    itemsList.items = items;
+    itemsList.items = itemsData.menu_items;
+    itemsList.category = itemsData.category.name;
+    itemsList.selectedIdx = 0;
 
-    console.log("Items controller items:", itemsList.items);
+    itemsList.setSelected = function (idx) {
+      if( itemsList.selectedIdx == idx ){
+        itemsList.selectedIdx = null;
+      }
+      else{
+        itemsList.selectedIdx = idx;
+      }
+    }
   }
 })();
