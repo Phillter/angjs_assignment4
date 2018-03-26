@@ -25,7 +25,7 @@
       templateUrl: 'src/menuapp/templates/categories.template.html',
       controller: 'CategoriesListController as categoriesList',
       resolve: {
-        items: ['MenuDataService', function (MenuDataService) {
+        categories: ['MenuDataService', function (MenuDataService) {
           return MenuDataService.getAllCategories();
         }]
       }
@@ -33,17 +33,16 @@
 
     //Items page
     .state('items', {
-      url: '/{category}/items',
-      templateUrl: '/src/menuapp/templates/items.templates.html',
+      url: '/{categoryShortName}/items',
+      templateUrl: '/src/menuapp/templates/items.template.html',
       controller: 'ItemsListController as itemsList',
-      params: {
-        category: null
-      },
       resolve: {
-        items: ['MenuDataService', 'categoryShortName',
-          function (MenuDataService, categoryShortName) {
-          return MenuDataService.getItemsForCategory(categoryShortName);
+        items: ['MenuDataService', '$stateParams',
+          function (MenuDataService, $stateParams) {
+            console.log("in routes");
+          return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
         }]
       }
     });
+  }
 })();

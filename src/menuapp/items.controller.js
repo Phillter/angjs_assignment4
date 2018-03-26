@@ -8,5 +8,7 @@
   function ItemsListController(MenuDataService, items) {
     var itemsList = this;
     itemsList.items = items;
+
+    console.log("Items controller items:", itemsList.items);
   }
 })();
