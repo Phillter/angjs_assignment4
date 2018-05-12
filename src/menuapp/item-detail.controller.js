@@ -7,8 +7,8 @@
   ItemDetailController.$inject = ['$stateParams', 'items'];
   function ItemDetailController($stateParams, items) {
     var itemDetail = this;
-    itemDetail.item = items[$stateParams.itemId];
-    itemDetail.detail = item.description;
+    itemDetail.item = items.menu_items[$stateParams.itemId];
+    itemDetail.detail = itemDetail.item.description;
   }
 
 })();

@@ -33,14 +33,14 @@
 
     //Items page
     .state('items', {
-      url: '/items',
+      url: '/{categoryShortName}/items',
       templateUrl: 'src/menuapp/templates/items.template.html',
       controller: 'ItemsListController as itemsList',
       params: {
         categoryShortName: null
       },
       resolve: {
-        itemsData: ['MenuDataService', '$stateParams',
+        items: ['MenuDataService', '$stateParams',
           function (MenuDataService, $stateParams) {
           return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
         }]
@@ -48,7 +48,6 @@
     })
 
     .state('items.itemDetail', {
-      // url: '/item-details',
       templateUrl:"src/menuapp/templates/item-detail.template.html",
       controller: 'ItemDetailController as itemDetail',
       params: {
